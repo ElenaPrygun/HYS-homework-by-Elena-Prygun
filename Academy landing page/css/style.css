@@ -17,7 +17,11 @@ body {
   font-size: 14px;
   line-height: 22px;
   color: var(--text-color);
+}
+.wrapper {
   min-width: 375px;
+  max-width: 1440px;
+  margin: 0 auto;
   overflow-x: hidden;
 }
 .container {
@@ -25,10 +29,6 @@ body {
   padding: 0 24px;
   margin: 0 auto;
 }
-/* .container-1440px {
-  max-width: 1440px;
-  margin: 0 auto;
-} */
 
 @media screen and (min-width: 768px) {
   .container {
@@ -829,19 +829,57 @@ li {
 }
 .preferred-courses {
   display: flex;
+  gap: 20px;
+}
+.item-course {
+  width: 207px;
+  height: 197px;
+  cursor: pointer;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center center;
+}
+.course-bg {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.graphic-design {
+  background-image: url(../assets/images/abstract.jpg);
+}
+.graphic-design > .course-bg {
+  background-color: rgba(101, 131, 255, 0.8);
+}
+.web-design {
+  background-image: url(../assets/images/laptop.jpg);
+}
+.web-design > .course-bg {
+  background-color: rgba(240, 199, 45, 0.8);
+}
+.marketing {
+  background-image: url(../assets/images/marketing.png);
+}
+.marketing > .course-bg {
+  background-color: rgba(148, 87, 243, 0.8);
+}
+.education {
+  background-image: url(../assets/images/laptops.jpg);
+}
+.education > .course-bg {
+  background-color: rgba(254, 95, 96, 0.8);
+}
+.course-bg > a {
+  color: var(--white-color);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
 }
 .web-design,
 .marketing,
 .education {
   display: none;
-}
-.graphic-design,
-.web-design,
-.marketing,
-.education {
-  cursor: pointer;
-  border-radius: 4px;
-  box-shadow: 0px 7px 20px #e2edfb;
 }
 @media screen and (min-width: 768px) {
   .web-design {
