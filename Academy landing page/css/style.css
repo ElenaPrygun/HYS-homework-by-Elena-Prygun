@@ -22,7 +22,6 @@ body {
   min-width: 375px;
   max-width: 1440px;
   margin: 0 auto;
-  overflow-x: hidden;
 }
 .container {
   width: 100%;
@@ -90,12 +89,14 @@ li {
 .read-description:hover,
 .become-a-sponsor:hover {
   background-color: #3d7fff;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .explore:focus,
 .read-more:focus,
 .read-description:focus,
 .become-a-sponsor:focus {
   background-color: #175ee9;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .explore,
 .read-more {
@@ -144,18 +145,24 @@ li {
 .get-started:hover,
 .apply-now:hover {
   background-color: #c0ffe4;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .submit:hover {
   background-color: #25de8e;
   box-shadow: 0px 10px 16px rgba(52, 210, 142, 0.58);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .get-started:focus,
 .apply-now:focus {
   background-color: #83ebbf;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .submit:focus {
   background-color: #4dda9d;
   box-shadow: 0px 4px 16px rgba(75, 202, 103, 0.58);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .arrow {
   border: none;
@@ -179,17 +186,21 @@ li {
 }
 .arrow:hover {
   background-color: var(--accent-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .arrow:hover .arrow-left,
 .arrow:hover .arrow-right {
   stroke: var(--white-color);
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .arrow:focus {
   background-color: #55b089;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .arrow:hover .arrow-left,
 .arrow:hover .arrow-right {
   stroke: var(--white-color);
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .play {
@@ -212,9 +223,11 @@ li {
 }
 .play:hover {
   border: none;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .play:focus {
   background-color: #55b089;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .request-service {
   border: 1px solid --white-color;
@@ -233,10 +246,13 @@ li {
 }
 .request-service:hover {
   background-color: rgba(255, 255, 255, 0.15);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .request-service:focus {
   border: 2px solid --white-color;
   background-color: rgba(255, 255, 255, 0.15);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .switcher button {
   width: 40px;
@@ -253,10 +269,14 @@ li {
 .switcher button:hover {
   color: var(--primary-color);
   box-shadow: 0px 4px 16px #e2edfb;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .switcher button:focus {
   color: var(--primary-color);
   border: 1px solid #64be97;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Header */
@@ -269,20 +289,21 @@ li {
   align-items: center;
   padding: 24px 0 14px 0px;
 }
-.mobile-menu {
-  width: 20px;
-  height: 20px;
+.burger-menu {
   margin-right: 15px;
+  margin-top: 5px;
+}
+.burger-menu > svg {
+  fill: var(--primary-color);
 }
 .logo {
-  width: 53.12px;
-  height: 24px;
   margin-right: 142px;
   cursor: pointer;
   fill: var(--primary-color);
 }
 .logo:hover {
   fill: var(--black-color);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .explore {
   width: 96px;
@@ -292,8 +313,7 @@ li {
   position: absolute;
   top: 0;
   right: 0;
-  height: 314px;
-  z-index: -1;
+  z-index: -2;
   width: 100%;
 }
 .main-picture-second-layer {
@@ -301,6 +321,7 @@ li {
   top: 0;
   right: 0;
   z-index: -1;
+  margin-left: 18px;
 }
 .menu {
   display: flex;
@@ -318,9 +339,10 @@ li {
 }
 .navigation-links li a:hover {
   color: var(--primary-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
-  .mobile-menu {
+  .burger-menu {
     margin-right: 50px;
   }
   .logo {
@@ -328,18 +350,21 @@ li {
   }
 }
 @media screen and (min-width: 1024px) {
+  .header-content {
+    justify-content: space-between;
+    padding-bottom: 30px;
+  }
   .main-picture-first-layer {
     width: 778px;
     height: 652px;
   }
   .main-picture-second-layer {
+    width: 740px;
     height: 652px;
+    margin-left: 0px;
   }
-}
-@media screen and (min-width: 1440px) {
-  .header-content {
-    justify-content: space-between;
-    padding-bottom: 30px;
+  .burger-menu {
+    display: none;
   }
   .mobile-menu {
     display: none;
@@ -352,6 +377,65 @@ li {
     gap: 20px;
     margin-right: 23px;
   }
+}
+
+/* Mobile-menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  width: 375px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.mobile-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--white-color);
+}
+.mobile-menu-body {
+  position: relative;
+  z-index: 2;
+  padding-left: 27px;
+  padding-top: 32px;
+  padding-right: 30px;
+}
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 80px;
+}
+.mob-burger {
+  fill: var(--black-color);
+  margin-right: 15px;
+}
+.mob-logo {
+  fill: var(--primary-color);
+  margin-right: 218px;
+}
+.mobile-menu-links {
+  padding-inline-start: 0;
+}
+.mobile-menu-links li {
+  border-bottom: 1px solid hsl(220deg 100% 62% / 20%);
+  padding-bottom: 32px;
+  padding-top: 32px;
+}
+.mobile-menu-links li a {
+  font-size: 26px;
+  line-height: 36px;
+  font-weight: 700;
+  color: var(--black-color);
+}
+.mobile-menu-links li a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color);
+  transition: text-decoration-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Section title-text */
@@ -370,6 +454,9 @@ li {
   align-items: center;
   padding-top: 11px;
   gap: 40px;
+  background-image: url(../assets/images/icons-union.png);
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .wrapper-for-title > h1 {
   margin-top: 22px;
@@ -969,6 +1056,7 @@ li {
 }
 .slider-control:focus {
   background-color: var(--primary-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
   .reviews-text {
@@ -1073,6 +1161,8 @@ li {
 }
 .quick-links-right > div {
   display: flex;
+  align-items: center;
+  gap: 15px;
 }
 .white-h2 {
   color: var(--white-color);
@@ -1086,10 +1176,7 @@ li {
   border-bottom: 1px solid hsl(0deg 0% 100% / 20%);
   padding-top: 13px;
   padding-bottom: 13px;
-}
-.list-of-quick-links li svg {
-  width: 30px;
-  height: 30px;
+  gap: 15px;
 }
 .list-of-quick-links li a {
   color: var(--white-color);
@@ -1236,7 +1323,8 @@ li {
 .fullname:focus,
 .phone:focus,
 .email:focus {
-  border: 2px solid var(--primary-color);
+  outline: 2px solid var(--primary-color);
+  transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .email {
@@ -1271,16 +1359,13 @@ li {
   display: flex;
   gap: 18px;
 }
-.social-links > li {
-  width: 20px;
-  height: 20px;
-}
 .green-hover {
   fill: none;
   stroke: var(--black-color);
 }
 .green-hover:hover {
   stroke: #97f5cd;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .links-title {
   font-size: 16px;
@@ -1294,6 +1379,7 @@ li {
 }
 .links > li a:hover {
   color: #97f5cd;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .bottom-section {
   display: flex;
@@ -1321,8 +1407,12 @@ li {
 .bottom-section > div:hover,
 .bottom-links > li a:hover {
   color: var(--primary-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
+  .bottom-section {
+    height: auto;
+  }
   .bottom-links {
     flex-direction: row;
     gap: 40px;
