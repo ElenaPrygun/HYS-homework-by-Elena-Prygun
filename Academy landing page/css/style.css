@@ -341,6 +341,15 @@ li {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
+  .main-picture-first-layer {
+    width: 778px;
+    height: 652px;
+  }
+  .main-picture-second-layer {
+    width: 740px;
+    height: 652px;
+    margin-left: 0px;
+  }
   .burger-menu {
     margin-right: 50px;
   }
@@ -352,15 +361,6 @@ li {
   .header-content {
     justify-content: space-between;
     padding-bottom: 30px;
-  }
-  .main-picture-first-layer {
-    width: 778px;
-    height: 652px;
-  }
-  .main-picture-second-layer {
-    width: 740px;
-    height: 652px;
-    margin-left: 0px;
   }
   .burger-menu {
     display: none;
