@@ -123,7 +123,6 @@ li {
 .get-started,
 .apply-now {
   display: block;
-  max-width: 119px;
   text-align: center;
   background-color: #97f5cd;
   color: var(--black-color);
@@ -131,6 +130,7 @@ li {
   padding-right: 24px;
   padding-top: 12px;
   padding-bottom: 12px;
+  line-height: 16px;
 }
 .submit {
   background-color: var(--accent-color);
@@ -230,8 +230,7 @@ li {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .request-service {
-  border: 1px solid --white-color;
-  border-color: var(--white-color);
+  border: 1px solid var(--white-color);
   color: var(--white-color);
   border-radius: 22px;
   padding-left: 20px;
@@ -1308,14 +1307,12 @@ li {
 .form {
   padding-left: 24px;
   padding-right: 24px;
-  padding-bottom: 84px;
+  padding-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.fullname,
-.phone,
-.email {
+.input-style {
   width: 327px;
   height: 44px;
   border: transparent;
@@ -1327,26 +1324,20 @@ li {
   padding-left: 12px;
   padding-right: 12px;
 }
-.fullname:focus,
-.phone:focus,
-.email:focus {
+.input-style:focus {
   outline: 2px solid var(--primary-color);
   transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.email {
-  margin-bottom: 32px;
+.submit {
+  margin-top: 32px;
 }
 @media screen and (min-width: 1440px) {
-  .fullname,
-  .phone,
-  .email {
+  .input-style {
     width: 420px;
   }
 }
 /* Footer */
 .upper-section {
-  padding-bottom: 42px;
   border-bottom: 1px solid hsl(0deg 0% 36% / 10%);
 }
 .footer-block {
