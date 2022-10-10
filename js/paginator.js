@@ -43,7 +43,7 @@ const dataForLatestBlog = [
 
 // Create item
 function createItem(obj) {
-  let item = ` <div class="item-wrap">
+  return ` <div class="item-wrap">
                 <div class="left-side-of-blog">
                   <span class="uppercase vertical-mode">${obj.category}</span>
                   <img src=${obj.userImage} class="author-photo"/>
@@ -54,7 +54,6 @@ function createItem(obj) {
                   <a class="read-now" href=${obj.redirectLink}>Read Now</a>
                 </div>
               </div> `;
-  return item;
 }
 
 // Select posts
@@ -65,31 +64,47 @@ function selectPosts(pageNum, arr) {
   return slicedPosts;
 }
 
-// Paginator
-const switcher = document.querySelector(".switcher");
+// Template for page
+function getCards(nameOfEl, n, nameOfArray) {
+  for (let obj of selectPosts(n, nameOfArray)) {
+    nameOfEl.innerHTML += createItem(obj);
+  }
+}
 
+// Reset Buttons Style
+const switcher = document.querySelector(".switcher");
+const buttons = Array.from(switcher.children);
+function resetStyles() {
+  for (let button of buttons) {
+    button.classList.remove("active", "switcher-button");
+    button.classList.add("inactive");
+  }
+}
+
+// Paginator
 function paginator(wrapper, array) {
   const el = document.querySelector(wrapper);
-  for (let obj of selectPosts(1, array)) {
-    el.innerHTML += createItem(obj);
-  }
+  getCards(el, 1, array);
   switcher.addEventListener("click", (e) => {
-    el.innerHTML = "";
     if (e.target.dataset.index === "1") {
-      for (let obj of selectPosts(1, array)) {
-        el.innerHTML += createItem(obj);
-      }
+      resetStyles();
+      e.target.classList.add("active");
+      el.innerHTML = "";
+      getCards(el, 1, array);
     }
     if (e.target.dataset.index === "2") {
-      for (let obj of selectPosts(2, array)) {
-        el.innerHTML += createItem(obj);
-      }
+      resetStyles();
+      e.target.classList.add("active");
+      el.innerHTML = "";
+      getCards(el, 2, array);
     }
     if (e.target.dataset.index === "3") {
-      for (let obj of selectPosts(3, array)) {
-        el.innerHTML += createItem(obj);
-      }
+      resetStyles();
+      e.target.classList.add("active");
+      el.innerHTML = "";
+      getCards(el, 3, array);
     }
   });
 }
-paginator("#paginator", dataForLatestBlog);
+
+export { paginator, dataForLatestBlog };
