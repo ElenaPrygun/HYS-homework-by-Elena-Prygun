@@ -585,34 +585,90 @@ li {
   align-items: center;
   padding-top: 80px;
   padding-bottom: 80px;
+  min-width: 0;
 }
 .courses-content > h2 {
   margin-bottom: 54px;
 }
-.avaliable-courses {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.slick-slider {
+  min-width: 0;
 }
-.course-marketing,
-.course-web-design {
-  display: none;
+.avaliable-courses {
+  position: relative;
+}
+.slick-list {
+  max-width: 260px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  height: 390px !important;
+}
+.slick-track {
+  height: 390px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
 }
 .course-design,
 .course-marketing,
 .course-web-design {
-  width: 270px;
+  width: 260px;
   height: 365px;
   border-radius: 8px;
   background: var(--black-color);
   position: relative;
   z-index: -2;
 }
+.slick-arrow {
+  font-size: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--white-color);
+  box-shadow: 0px 4px 16px #e2edfb;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+}
+.slick-arrow:hover {
+  background-color: var(--accent-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.slick-arrow:focus {
+  background-color: #55b089;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slick-arrow.slick-prev {
+  left: -48px;
+  background-image: url(../assets/images/svg/slide-left.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.slick-arrow.slick-next {
+  right: -48px;
+  background-image: url(../assets/images/svg/slide-right.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.slick-arrow.slick-prev:hover {
+  background-image: url(../assets/images/svg/left-hover.svg);
+}
+.slick-arrow.slick-next:hover {
+  background-image: url(../assets/images/svg/right-hover.svg);
+}
+
+.slick-arrow.slick-disabled {
+  opacity: 0.1;
+}
+
 .course-design-image,
 .course-marketing-image,
 .course-web-design-image {
   width: 100%;
   height: 100%;
+  border-radius: 8px;
   object-fit: cover;
   opacity: 80%;
   position: absolute;
@@ -644,7 +700,6 @@ li {
   align-items: baseline;
   height: 60px;
   padding: 16px;
-
   border-top: 1px solid hsl(0deg 0% 100% / 30%);
 }
 .new-price {
@@ -659,11 +714,12 @@ li {
   line-height: 16px;
   text-decoration: line-through;
   color: var(--white-color);
-  margin-right: 67px;
+  margin-right: 24px;
 }
 .rating {
   display: flex;
   gap: 3px;
+  flex-shrink: 0;
 }
 .amount {
   font-size: 12px;
@@ -671,16 +727,13 @@ li {
   color: var(--white-color);
 }
 @media screen and (min-width: 768px) {
-  .course-marketing {
-    display: block;
+  .slick-list {
+    max-width: 540px;
   }
 }
 @media screen and (min-width: 1440px) {
-  .avaliable-courses {
-    gap: 20px;
-  }
-  .course-web-design {
-    display: block;
+  .slick-list {
+    max-width: 820px;
   }
 }
 
@@ -910,6 +963,7 @@ li {
     margin-right: 100px;
   }
 }
+
 /* Which one do you prefer */
 .preferred-course {
   padding-top: 100px;
@@ -939,76 +993,47 @@ li {
   padding-bottom: 80px;
   align-items: center;
 }
-.all-courses > .arrow {
-  margin: 20px;
-}
 .preferred-courses {
+  width: 217.5px;
+  overflow: hidden;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.courses-track {
   display: flex;
-  gap: 20px;
+  transition: 0.2s;
 }
 .item-course {
-  width: 207px;
+  width: 197.5px;
   height: 197px;
   cursor: pointer;
-  border-radius: 4px;
-  background-size: cover;
-  background-position: center center;
-}
-.course-bg {
-  height: 100%;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-.graphic-design {
-  background-image: url(../assets/images/abstract.jpg);
-}
-.graphic-design > .course-bg {
-  background-color: rgba(101, 131, 255, 0.8);
-}
-.web-design {
-  background-image: url(../assets/images/laptop.jpg);
-}
-.web-design > .course-bg {
-  background-color: rgba(240, 199, 45, 0.8);
-}
-.marketing {
-  background-image: url(../assets/images/marketing.png);
-}
-.marketing > .course-bg {
-  background-color: rgba(148, 87, 243, 0.8);
-}
-.education {
-  background-image: url(../assets/images/laptops.jpg);
-}
-.education > .course-bg {
-  background-color: rgba(254, 95, 96, 0.8);
-}
-.course-bg > a {
+.item-course > a {
   color: var(--white-color);
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
 }
-.web-design,
-.marketing,
-.education {
-  display: none;
-}
+
 @media screen and (min-width: 768px) {
-  .web-design {
-    display: block;
+  .preferred-courses {
+    width: 435px;
   }
 }
 @media screen and (min-width: 1440px) {
-  .web-design,
-  .marketing,
-  .education {
-    display: block;
+  .preferred-courses {
+    width: 870px;
   }
 }
-
 /* Our great customers */
 .reviews {
   position: relative;
