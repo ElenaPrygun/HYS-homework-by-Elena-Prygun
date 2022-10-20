@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Academy landing page</title>
     <link href=".\css\style.css" rel="stylesheet" />
+    <script src="../js/index.js" defer type="module"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -800,61 +801,12 @@
         <section class="latest-blog">
           <div class="container">
             <h2>Latest Blog</h2>
-            <div class="wrap-for-blog">
-              <div class="item-wrap">
-                <div class="left-side-of-blog">
-                  <span class="uppercase vertical-mode">design</span>
-                  <img
-                    src="./assets/images/person2.png"
-                    alt="person2"
-                    width="48px"
-                    class="author-photo"
-                  />
-                </div>
-                <div class="right-side-of-blog">
-                  <img
-                    src="./assets/images/laptop.jpg"
-                    alt="laptop"
-                    width="328px"
-                    class="picture-of-blog"
-                  />
-
-                  <div class="name-of-news">
-                    <a href="#">International Conference on Bussiness</a>
-                  </div>
-                  <a href="#">Read Now</a>
-                </div>
-              </div>
-              <div class="item-wrap">
-                <div class="left-side-of-blog">
-                  <span class="uppercase vertical-mode">design</span>
-                  <img
-                    src="./assets/images/person1.png"
-                    alt="person1"
-                    width="48px"
-                    class="author-photo"
-                  />
-                </div>
-                <div class="right-side-of-blog">
-                  <img
-                    src="./assets/images/laptops.jpg"
-                    alt="laptop"
-                    width="328px"
-                    class="picture-of-blog"
-                  />
-                  <div class="name-of-news">
-                    <a href="#">International Conference on Bussiness</a>
-                  </div>
-                  <a href="#">Read Now</a>
-                </div>
-              </div>
-
+            <div class="wrap-with-switcher">
+              <div id="paginator" class="wrap-for-blog"></div>
               <div class="switcher">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
+                <button class="switcher-button" data-index="1">1</button>
+                <button class="switcher-button" data-index="2">2</button>
+                <button class="switcher-button" data-index="3">3</button>
               </div>
             </div>
           </div>
@@ -973,6 +925,5 @@
         </div>
       </footer>
     </div>
-    <script src="./mobile-menu.js"></script>
   </body>
 </html>
