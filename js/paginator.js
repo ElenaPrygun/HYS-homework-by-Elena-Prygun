@@ -74,6 +74,7 @@ function getCards(nameOfEl, n, nameOfArray) {
 // Reset Buttons Style
 const switcher = document.querySelector(".switcher");
 const buttons = Array.from(switcher.children);
+switcher.firstElementChild.classList.add("active");
 function resetStyles() {
   for (let button of buttons) {
     button.classList.remove("active", "switcher-button");
@@ -86,24 +87,10 @@ function paginator(wrapper, array) {
   const el = document.querySelector(wrapper);
   getCards(el, 1, array);
   switcher.addEventListener("click", (e) => {
-    if (e.target.dataset.index === "1") {
-      resetStyles();
-      e.target.classList.add("active");
-      el.innerHTML = "";
-      getCards(el, 1, array);
-    }
-    if (e.target.dataset.index === "2") {
-      resetStyles();
-      e.target.classList.add("active");
-      el.innerHTML = "";
-      getCards(el, 2, array);
-    }
-    if (e.target.dataset.index === "3") {
-      resetStyles();
-      e.target.classList.add("active");
-      el.innerHTML = "";
-      getCards(el, 3, array);
-    }
+    resetStyles();
+    e.target.classList.add("active");
+    el.innerHTML = "";
+    getCards(el, e.target.dataset.index, array);
   });
 }
 
