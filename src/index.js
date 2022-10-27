@@ -1,3 +1,7 @@
+import "@babel/polyfill";
+import "./index.html";
+import "./css/style.css";
+
 // Mobile menu
 import "./mobile-menu.js";
 
@@ -16,9 +20,9 @@ const slider = new Slider("#slider");
 slider.setData(dataForSlider);
 
 // 2000+ Online courses- slick-slider
-import "https://code.jquery.com/jquery-3.6.1.min.js";
-import "./slick.min.js";
-
+import $ from "jquery";
+// import "./slick.min.js";
+import "slick-carousel";
 $(document).ready(function () {
   $(".avaliable-courses").slick({
     mobileFirst: true,
