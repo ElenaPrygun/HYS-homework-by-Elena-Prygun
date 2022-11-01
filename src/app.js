@@ -12,6 +12,7 @@ import { checkForm } from "./form.js";
 import { Slider } from "./slider.js";
 import { dataForSlider } from "./data.js";
 import { Storage } from "./storage.js";
+import { Select } from "./selector";
 
 // 2000+ Online courses- slick-slider
 import $ from "jquery";
@@ -49,11 +50,32 @@ function slickSlider() {
 
 export class App {
   constructor() {}
-  init() {
+  async init() {
     mobileMenu();
     paginator("#paginator", dataForLatestBlog);
-    new Slider("#slider").setData(new Storage(dataForSlider).getSliderData());
     slickSlider();
     checkForm();
+
+    const data = await this.onSelectChange();
+
+    this.slider = new Slider("#slider");
+    this.slider.setData(new Storage(data).getSliderData());
+
+    new Select("select")
+      .init()
+      .addEventListener("change", this.onAlbumChange.bind(this));
+  }
+
+  async onAlbumChange(e) {
+    let newData = await this.onSelectChange(e.target.value);
+    this.slider.setData(newData);
+  }
+
+  async onSelectChange(albumId) {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/albums/${albumId}/photos`
+    );
+    const result = await response.json();
+    return result.slice(0, 8);
   }
 }

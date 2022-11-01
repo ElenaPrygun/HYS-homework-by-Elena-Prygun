@@ -17,6 +17,7 @@ class Slider {
 
   setData(data) {
     this.itemsCount = data.length;
+    this.coursesTrack.innerHTML = "";
     for (let item of data) {
       this.coursesTrack.innerHTML += this.createSliderItemMarkup(item);
     }
