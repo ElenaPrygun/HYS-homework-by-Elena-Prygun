@@ -61,9 +61,9 @@ export class App {
     this.slider = new Slider("#slider");
     this.slider.setData(new Storage(data).getSliderData());
 
-    new Select("select")
-      .init()
-      .addEventListener("change", this.onAlbumChange.bind(this));
+    this.select = new Select("select").init();
+
+    this.select.addEventListener("change", this.onAlbumChange.bind(this));
   }
 
   async onAlbumChange(e) {

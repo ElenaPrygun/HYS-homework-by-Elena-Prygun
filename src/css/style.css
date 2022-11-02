@@ -998,7 +998,7 @@ li {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEyIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMC4yMzQzMTUgMC4yMzQzMTVDMC41NDY3MzQgLTAuMDc4MTA0OSAxLjA1MzI3IC0wLjA3ODEwNDkgMS4zNjU2OSAwLjIzNDMxNUw1LjggNC42Njg2M0wxMC4yMzQzIDAuMjM0MzE1QzEwLjU0NjcgLTAuMDc4MTA0OSAxMS4wNTMzIC0wLjA3ODEwNDkgMTEuMzY1NyAwLjIzNDMxNUMxMS42NzgxIDAuNTQ2NzM0IDExLjY3ODEgMS4wNTMyNyAxMS4zNjU3IDEuMzY1NjlMNi40MzY0IDYuMjk0OTdDNi4wODQ5MyA2LjY0NjQ0IDUuNTE1MDggNi42NDY0NSA1LjE2MzYgNi4yOTQ5N0wwLjIzNDMxNSAxLjM2NTY5Qy0wLjA3ODEwNDkgMS4wNTMyNyAtMC4wNzgxMDQ5IDAuNTQ2NzM0IDAuMjM0MzE1IDAuMjM0MzE1WiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg=="),
     linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
   background-position: right 1em top 50%, 0 0;
-  background-size: 0.65em auto, 100%;
+  background-size: 1em auto, 100%;
   background-repeat: no-repeat, repeat;
   color: var(--text-color);
   font-size: 16px;
@@ -1010,10 +1010,10 @@ li {
 }
 #select:focus {
   border: 1px solid var(--primary-color);
-}
-#select > option:hover {
-  color: var(--primary-color);
-  background-color: none;
+  outline: 0;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDcgMTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNi4zMjQyOCAxMS4zNjU4QzYuNjM2NyAxMS4wNTM0IDYuNjM2NyAxMC41NDY4IDYuMzI0MjggMTAuMjM0NEwxLjg4OTk3IDUuODAwMUw2LjMyNDI4IDEuMzY1NzhDNi42MzY3IDEuMDUzMzYgNi42MzY3IDAuNTQ2ODMxIDYuMzI0MjggMC4yMzQ0MTJDNi4wMTE4NiAtMC4wNzgwMDc3IDUuNTA1MzMgLTAuMDc4MDA3NyA1LjE5MjkxIDAuMjM0NDEyTDAuMjYzNjE5IDUuMTYzN0MtMC4wODc4NTEgNS41MTUxNyAtMC4wODc4NTQ5IDYuMDg1MDIgMC4yNjM2MTkgNi40MzY0OUw1LjE5MjkxIDExLjM2NThDNS41MDUzMyAxMS42NzgyIDYuMDExODYgMTEuNjc4MiA2LjMyNDI4IDExLjM2NThaIiBmaWxsPSIjMUI2M0YwIi8+Cjwvc3ZnPgo="),
+    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+  background-size: 0.65em auto, 100%;
 }
 
 .all-courses {
