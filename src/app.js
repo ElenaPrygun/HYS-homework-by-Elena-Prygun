@@ -56,22 +56,20 @@ export class App {
     slickSlider();
     checkForm();
 
-    const data = await this.onSelectChange();
+    let data = await this.onSelectChange();
 
     this.slider = new Slider("#slider");
-    this.slider.setData(new Storage(data).getSliderData());
+    this.slider.setData(data);
 
-    this.select = new Select("select").init();
-
-    this.select.addEventListener("change", this.onAlbumChange.bind(this));
+    this.select = new Select("select", this.onAlbumChange.bind(this));
   }
 
   async onAlbumChange(e) {
-    let newData = await this.onSelectChange(e.target.value);
+    let newData = await this.onSelectChange(e);
     this.slider.setData(newData);
   }
 
-  async onSelectChange(albumId) {
+  async onSelectChange(albumId = 1) {
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/albums/${albumId}/photos`
     );

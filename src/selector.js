@@ -1,19 +1,33 @@
 export class Select {
-  #container;
-  constructor(selector) {
-    this.#container = document.querySelector(selector);
-    this.#container.innerHTML = this.createMarkup();
+  #id;
+  constructor(selector, callbackOnSelect) {
+    this.#id = "#select";
+    this.selector = document.querySelector(selector);
+    this.callbackOnSelect = callbackOnSelect;
+    this.createMarkup();
+    this.addFunctionality();
+    this.init();
   }
 
   createMarkup() {
-    return `<option> Select item </option>
-    <option value= "1"> Item 1 </option>  
-     <option value= "2"> Item 2 </option>
-      <option value= "3"> Item 3 </option>`;
+    for (let i = 0; i < 3; i++) {
+      let option = document.createElement("option");
+      option.setAttribute("value", `${i + 1}`);
+      option.innerHTML = `Item ${i + 1}`;
+      this.selector.appendChild(option);
+    }
+
+    return this.selector;
+  }
+
+  addFunctionality() {
+    this.selector.addEventListener("change", (e) => {
+      this.callbackOnSelect(e.target.value);
+    });
   }
 
   init() {
-    const select = document.querySelector("#select");
+    const select = document.querySelector(this.#id);
     return select;
   }
 }
