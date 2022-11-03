@@ -56,12 +56,12 @@ export class App {
     slickSlider();
     checkForm();
 
-    let data = await this.onSelectChange();
-
     this.slider = new Slider("#slider");
-    this.slider.setData(data);
 
-    this.select = new Select("select", this.onAlbumChange.bind(this));
+    this.select = new Select("#select", this.onAlbumChange.bind(this));
+
+    let data = await this.onSelectChange();
+    this.slider.setData(data);
   }
 
   async onAlbumChange(e) {
