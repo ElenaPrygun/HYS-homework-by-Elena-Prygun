@@ -4,9 +4,7 @@ export class Storage {
     this.saveData();
   }
   saveData() {
-    if (!localStorage.getItem("dataForSlider")) {
-      localStorage.setItem("dataForSlider", JSON.stringify(this.storageData));
-    }
+    localStorage.setItem("dataForSlider", JSON.stringify(this.storageData));
   }
   getSliderData() {
     return localStorage.getItem("dataForSlider")
