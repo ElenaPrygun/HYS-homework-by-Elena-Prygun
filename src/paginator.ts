@@ -1,4 +1,6 @@
-const dataForLatestBlog = [
+import { TypeForPaginatorsData } from "./types&enums/typeForPaginator'sData";
+
+const dataForLatestBlog: object[] = [
   {
     id: 1,
     title: "accusamus beatae ad facilis cum similique qui sunt",
@@ -42,7 +44,7 @@ const dataForLatestBlog = [
 ];
 
 // Create item
-function createItem(obj) {
+function createItem(obj: TypeForPaginatorsData): string {
   return ` <div class="item-wrap">
                 <div class="left-side-of-blog">
                   <span class="uppercase vertical-mode">${obj.category}</span>
@@ -57,25 +59,29 @@ function createItem(obj) {
 }
 
 // Select posts
-function selectPosts(pageNum, arr) {
-  const start = (pageNum - 1) * 2;
-  const end = start + 2;
-  const slicedPosts = arr.slice(start, end);
+function selectPosts(pageNum: number, arr: object[]): object[] {
+  const start: number = (pageNum - 1) * 2;
+  const end: number = start + 2;
+  const slicedPosts: object[] = arr.slice(start, end);
   return slicedPosts;
 }
 
 // Template for page
-function getCards(nameOfEl, n, nameOfArray) {
+function getCards(
+  nameOfEl: HTMLElement,
+  n: number,
+  nameOfArray: object[]
+): void {
   for (let obj of selectPosts(n, nameOfArray)) {
-    nameOfEl.innerHTML += createItem(obj);
+    nameOfEl.innerHTML += createItem(obj as any);
   }
 }
 
 // Reset Buttons Style
-const switcher = document.querySelector(".switcher");
-const buttons = Array.from(switcher.children);
+const switcher = document.querySelector(".switcher") as HTMLDivElement;
+const buttons: Element[] = Array.from(switcher.children);
 switcher.firstElementChild.classList.add("active");
-function resetStyles() {
+function resetStyles(): void {
   for (let button of buttons) {
     button.classList.remove("active", "switcher-button");
     button.classList.add("inactive");
@@ -83,14 +89,16 @@ function resetStyles() {
 }
 
 // Paginator
-function paginator(wrapper, array) {
-  const el = document.querySelector(wrapper);
+function paginator(wrapper: string, array: object[]): void {
+  const el = document.querySelector(wrapper) as HTMLElement;
   getCards(el, 1, array);
-  switcher.addEventListener("click", (e) => {
+  switcher.addEventListener("click", (e: Event) => {
     resetStyles();
-    e.target.classList.add("active");
+    let target = e.target as HTMLButtonElement;
+    let datasetValue: number = +target.dataset.index;
+    target.classList.add("active");
     el.innerHTML = "";
-    getCards(el, e.target.dataset.index, array);
+    getCards(el, datasetValue, array);
   });
 }
 

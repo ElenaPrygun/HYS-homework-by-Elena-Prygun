@@ -1,5 +1,6 @@
 export class Storage {
-  constructor(storageData) {
+  storageData: [];
+  constructor(storageData: []) {
     this.storageData = storageData;
     this.saveData();
   }

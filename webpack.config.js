@@ -7,9 +7,9 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  mode: "production",
-  entry: ["@babel/polyfill", "./src/index.js"],
-  devtool: false,
+  mode: "development",
+  entry: ["@babel/polyfill", "./src/index.ts"],
+  devtool: "inline-source-map",
   devServer: {
     historyApiFallback: true,
     static: {
@@ -29,6 +29,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
@@ -42,6 +47,9 @@ module.exports = {
         loader: "html-loader",
       },
     ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
   optimization: {
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
