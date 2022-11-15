@@ -1,9 +1,10 @@
-import { selectOptions } from "./types&enums/enumForSelectOptions";
+import { selectOptions } from "./models/Option.model";
+import { OnSelect } from "./models/OnSelect.model";
 
 export class Select {
   private el: HTMLElement | null;
-  callbackOnSelect: Function;
-  constructor(selector: string, callbackOnSelect: Function) {
+  callbackOnSelect: OnSelect;
+  constructor(selector: string, callbackOnSelect: OnSelect) {
     this.el = document.querySelector(selector);
     this.callbackOnSelect = callbackOnSelect;
 
@@ -11,12 +12,12 @@ export class Select {
   }
 
   initMarkup(): void {
-    const optionsMarkup:string[] = [0, 1, 2].map(
+    const optionsMarkup: string[] = [0, 1, 2].map(
       (id) =>
         `<option value="${Number(Object.values(selectOptions)[id])}"> ${
           Object.keys(selectOptions)[id]
         }</option>`
-    );    
+    );
     this.el.innerHTML = `<select data-select> ${optionsMarkup}</select>`;
   }
 

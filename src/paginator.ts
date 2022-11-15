@@ -1,4 +1,4 @@
-import { TypeForPaginatorsData } from "./types&enums/typeForPaginator'sData";
+import { PaginatorData } from "./models/PaginatorData.model";
 
 const dataForLatestBlog: object[] = [
   {
@@ -44,7 +44,7 @@ const dataForLatestBlog: object[] = [
 ];
 
 // Create item
-function createItem(obj: TypeForPaginatorsData): string {
+function createItem(obj: PaginatorData): string {
   return ` <div class="item-wrap">
                 <div class="left-side-of-blog">
                   <span class="uppercase vertical-mode">${obj.category}</span>

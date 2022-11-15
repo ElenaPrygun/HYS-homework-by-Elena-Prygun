@@ -49,8 +49,8 @@ function slickSlider() {
 }
 
 export class App {
-  slider:any;
-  select:any;
+  slider: any;
+  select: any;
   constructor() {}
   async init() {
     mobileMenu();
@@ -66,7 +66,7 @@ export class App {
     this.slider.setData(data);
   }
 
-  async onAlbumChange(e:number) {
+  async onAlbumChange(e: number) {
     let newData = await this.onSelectChange(e);
     this.slider.setData(newData);
   }

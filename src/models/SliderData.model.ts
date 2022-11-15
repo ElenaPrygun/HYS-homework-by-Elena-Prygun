@@ -1,4 +1,4 @@
-export type TypeForDataObject = {
+export type SliderData = {
   albumId?: number;
   id?: number;
   title: string;

@@ -1,4 +1,4 @@
-export type TypeForPaginatorsData = {
+export type PaginatorData = {
   id?: number;
   title: string;
   url: string;

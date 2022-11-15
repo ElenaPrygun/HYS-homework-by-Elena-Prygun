@@ -1,4 +1,4 @@
-import { TypeForDataObject } from "./types&enums/typeForDataObject";
+import { SliderData } from "./models/SliderData.model";
 
 export class Slider {
   wrap: HTMLElement;
@@ -28,15 +28,15 @@ export class Slider {
     this.init();
   }
 
-  setData(data: []): void {
+  setData(data: object[]): void {
     this.itemsCount = data.length;
     this.coursesTrack.innerHTML = "";
     for (let item of data) {
-      this.coursesTrack.innerHTML += this.createSliderItemMarkup(item);
+      this.coursesTrack.innerHTML += this.createSliderItemMarkup(item as any);
     }
   }
 
-  createSliderItemMarkup(obj: TypeForDataObject): string {
+  createSliderItemMarkup(obj: SliderData): string {
     return `<div class="item-course" style = "background-image:url(${obj.url})" >
           <a href="#">${obj.title}</a>
          </div>`;
