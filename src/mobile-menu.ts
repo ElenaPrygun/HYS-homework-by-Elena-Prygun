@@ -1,8 +1,8 @@
-function mobileMenu() {
-  const header = document.querySelector(".header-content"); 
-  const mobyleMenu = document.querySelector(".mobile-menu");
-  const burgerBtn = document.querySelector(".burger");
-  const closeBtn = document.querySelector(".mob-close");
+function mobileMenu(): void {
+  const header = document.querySelector(".header-content") as HTMLElement;
+  const mobyleMenu = document.querySelector(".mobile-menu") as HTMLElement;
+  const burgerBtn = document.querySelector(".burger") as HTMLElement;
+  const closeBtn = document.querySelector(".mob-close") as HTMLElement;
   const mobLinks = Array.from(
     document.querySelectorAll(".mobile-menu-links li")
   );

@@ -1,21 +1,21 @@
 // Mobile menu
-import { mobileMenu } from "./mobile-menu.js";
+import { mobileMenu } from "./mobile-menu";
 
 // Latest Blog
-import { paginator, dataForLatestBlog } from "./paginator.js";
+import { paginator, dataForLatestBlog } from "./paginator";
 
 // Form
-import "./form.js";
-import { checkForm } from "./form.js";
+import "./form";
+import { checkForm } from "./form";
 
 // Which one do you prefer
-import { Slider } from "./slider.js";
-import { dataForSlider } from "./data.js";
-import { Storage } from "./storage.js";
+import { Slider } from "./slider";
+import { dataForSlider } from "./data";
+import { Storage } from "./storage";
 import { Select } from "./selector";
 
 // 2000+ Online courses- slick-slider
-import $ from "jquery";
+import * as $ from "jquery";
 import "slick-carousel";
 
 function slickSlider() {
@@ -49,6 +49,8 @@ function slickSlider() {
 }
 
 export class App {
+  slider: any;
+  select: any;
   constructor() {}
   async init() {
     mobileMenu();
@@ -64,7 +66,7 @@ export class App {
     this.slider.setData(data);
   }
 
-  async onAlbumChange(e) {
+  async onAlbumChange(e: number) {
     let newData = await this.onSelectChange(e);
     this.slider.setData(newData);
   }

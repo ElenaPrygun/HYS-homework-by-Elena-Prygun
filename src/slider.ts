@@ -1,5 +1,18 @@
-class Slider {
-  constructor(selector) {
+import { SliderData } from "./models/SliderData.model";
+
+export class Slider {
+  wrap: HTMLElement;
+  coursesTrack: HTMLDivElement;
+  position: number;
+  slidesToScroll: number;
+  itemWidth: number;
+  movePosition: number;
+  btnNext: HTMLButtonElement;
+  btnPrev: HTMLButtonElement;
+  slides: number;
+  itemsCount: number;
+
+  constructor(selector: string) {
     this.wrap = document.querySelector(selector);
     this.coursesTrack = document.createElement("div");
     this.coursesTrack.classList.add("courses-track");
@@ -15,22 +28,22 @@ class Slider {
     this.init();
   }
 
-  setData(data) {
+  setData(data: object[]): void {
     this.itemsCount = data.length;
     this.coursesTrack.innerHTML = "";
     for (let item of data) {
-      this.coursesTrack.innerHTML += this.createSliderItemMarkup(item);
+      this.coursesTrack.innerHTML += this.createSliderItemMarkup(item as any);
     }
   }
 
-  createSliderItemMarkup(obj) {
+  createSliderItemMarkup(obj: SliderData): string {
     return `<div class="item-course" style = "background-image:url(${obj.url})" >
           <a href="#">${obj.title}</a>
          </div>`;
   }
 
-  calcSlidesToShow() {
-    let slidesToShow;
+  calcSlidesToShow(): number {
+    let slidesToShow: number;
     if (window.matchMedia("(max-width:767px)").matches) {
       slidesToShow = 1;
     } else if (window.matchMedia("(max-width: 1339px)").matches) {
@@ -41,7 +54,7 @@ class Slider {
     return slidesToShow;
   }
 
-  checkBtns() {
+  checkBtns(): void {
     if (this.position == 0) {
       this.btnPrev.disabled = true;
       this.btnPrev.style.display = "none";
@@ -59,20 +72,18 @@ class Slider {
     }
   }
 
-  init() {
+  init(): void {
     this.checkBtns();
-    this.btnNext.addEventListener("click", (e) => {
+    this.btnNext.addEventListener("click", (e: Event) => {
       this.position -= this.movePosition;
       this.coursesTrack.style.transform = `translateX(${this.position}px)`;
       this.checkBtns();
     });
 
-    this.btnPrev.addEventListener("click", (e) => {
+    this.btnPrev.addEventListener("click", (e: Event) => {
       this.position += this.movePosition;
       this.coursesTrack.style.transform = `translateX(${this.position}px)`;
       this.checkBtns();
     });
   }
 }
-
-export { Slider };
