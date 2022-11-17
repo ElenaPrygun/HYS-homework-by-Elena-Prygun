@@ -1,4 +1,4 @@
-function checkForm() {
+function checkForm(): void {
   const inputs: HTMLInputElement[] = Array.from(
     document.querySelectorAll("#form>input")
   );

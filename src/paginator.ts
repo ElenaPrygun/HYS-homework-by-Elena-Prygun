@@ -1,5 +1,7 @@
 import { PaginatorData } from "./models/PaginatorData.model";
 
+import { InitPaginator } from "./models/IPaginator.model";
+
 const dataForLatestBlog: object[] = [
   {
     id: 1,
@@ -89,7 +91,7 @@ function resetStyles(): void {
 }
 
 // Paginator
-function paginator(wrapper: string, array: object[]): void {
+function paginator(wrapper: string, array: object[]) {
   const el = document.querySelector(wrapper) as HTMLElement;
   getCards(el, 1, array);
   switcher.addEventListener("click", (e: Event) => {

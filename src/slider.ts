@@ -1,16 +1,15 @@
 import { SliderData } from "./models/SliderData.model";
 
 export class Slider {
-  wrap: HTMLElement;
-  coursesTrack: HTMLDivElement;
-  position: number;
-  slidesToScroll: number;
-  itemWidth: number;
-  movePosition: number;
-  btnNext: HTMLButtonElement;
-  btnPrev: HTMLButtonElement;
-  slides: number;
-  itemsCount: number;
+  private wrap: HTMLElement;
+  private coursesTrack: HTMLDivElement;
+  private position: number;
+  private slidesToScroll: number;
+  private itemWidth: number;
+  private movePosition: number;
+  private btnNext: HTMLButtonElement;
+  private btnPrev: HTMLButtonElement;
+  private itemsCount: number;
 
   constructor(selector: string) {
     this.wrap = document.querySelector(selector);
@@ -23,12 +22,11 @@ export class Slider {
     this.movePosition = this.slidesToScroll * this.itemWidth;
     this.btnNext = document.querySelector(".btn-prefcourse-right");
     this.btnPrev = document.querySelector(".btn-prefcourse-left");
-    this.slides = this.calcSlidesToShow();
     this.checkBtns();
     this.init();
   }
 
-  setData(data: object[]): void {
+  protected setData(data: object[]): void {
     this.itemsCount = data.length;
     this.coursesTrack.innerHTML = "";
     for (let item of data) {
@@ -36,13 +34,13 @@ export class Slider {
     }
   }
 
-  createSliderItemMarkup(obj: SliderData): string {
+  private createSliderItemMarkup(obj: SliderData): string {
     return `<div class="item-course" style = "background-image:url(${obj.url})" >
           <a href="#">${obj.title}</a>
          </div>`;
   }
 
-  calcSlidesToShow(): number {
+  private calcSlidesToShow(): number {
     let slidesToShow: number;
     if (window.matchMedia("(max-width:767px)").matches) {
       slidesToShow = 1;
@@ -54,7 +52,7 @@ export class Slider {
     return slidesToShow;
   }
 
-  checkBtns(): void {
+  private checkBtns(): void {
     if (this.position == 0) {
       this.btnPrev.disabled = true;
       this.btnPrev.style.display = "none";
@@ -72,7 +70,7 @@ export class Slider {
     }
   }
 
-  init(): void {
+  private init(): void {
     this.checkBtns();
     this.btnNext.addEventListener("click", (e: Event) => {
       this.position -= this.movePosition;
