@@ -89,7 +89,7 @@ function resetStyles(): void {
 }
 
 // Paginator
-function paginator(wrapper: string, array: PaginatorData[]) {
+function paginator(wrapper: string, array: PaginatorData[]): void {
   const el = document.querySelector(wrapper) as HTMLElement;
   getCards(el, 1, array);
   switcher.addEventListener("click", (e: Event) => {
