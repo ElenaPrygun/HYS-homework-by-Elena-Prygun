@@ -18,7 +18,7 @@ import { Select } from "./selector";
 import * as $ from "jquery";
 import "slick-carousel";
 
-function slickSlider() {
+function slickSlider(): void {
   $(document).ready(function () {
     $(".avaliable-courses").slick({
       mobileFirst: true,
@@ -48,34 +48,45 @@ function slickSlider() {
   });
 }
 
-export class App {
-  slider: any;
-  select: any;
-  constructor() {}
-  async init() {
+abstract class InitApp {
+  protected BASE_URL: string;
+
+  constructor() {
+    this.BASE_URL = "https://jsonplaceholder.typicode.com/albums/";
+  }
+
+  protected onSelectChange(id: number): any {}
+}
+
+export class App extends InitApp {
+  private slider: any;
+  private select: any;
+  private data: object[];
+  constructor() {
+    super();
+    this.slider = new Slider("#slider");
+    this.select = new Select("#select", this.onAlbumChange.bind(this));
+  }
+
+  public async init(): Promise<void> {
     mobileMenu();
     paginator("#paginator", dataForLatestBlog);
     slickSlider();
     checkForm();
 
-    this.slider = new Slider("#slider");
+    this.data = await this.onSelectChange();
 
-    this.select = new Select("#select", this.onAlbumChange.bind(this));
-
-    let data = await this.onSelectChange();
-    this.slider.setData(data);
+    this.slider.setData(this.data);
   }
 
-  async onAlbumChange(e: number) {
-    let newData = await this.onSelectChange(e);
-    this.slider.setData(newData);
-  }
-
-  async onSelectChange(albumId = 1) {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/albums/${albumId}/photos`
-    );
-    const result = await response.json();
+  protected async onSelectChange(albumId: number = 1): Promise<any> {
+    let response: Response = await fetch(`${this.BASE_URL}${albumId}/photos`);
+    const result: object[] = await response.json();
     return result.slice(0, 8);
+  }
+
+  private async onAlbumChange(e: number): Promise<void> {
+    let newData: object[] = await this.onSelectChange(e);
+    this.slider.setData(newData);
   }
 }

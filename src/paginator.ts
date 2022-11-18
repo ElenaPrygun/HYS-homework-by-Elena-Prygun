@@ -1,6 +1,6 @@
 import { PaginatorData } from "./models/PaginatorData.model";
 
-const dataForLatestBlog: object[] = [
+const dataForLatestBlog: PaginatorData[] = [
   {
     id: 1,
     title: "accusamus beatae ad facilis cum similique qui sunt",
@@ -59,7 +59,7 @@ function createItem(obj: PaginatorData): string {
 }
 
 // Select posts
-function selectPosts(pageNum: number, arr: object[]): object[] {
+function selectPosts(pageNum: number, arr: PaginatorData[]): object[] {
   const start: number = (pageNum - 1) * 2;
   const end: number = start + 2;
   const slicedPosts: object[] = arr.slice(start, end);
@@ -70,7 +70,7 @@ function selectPosts(pageNum: number, arr: object[]): object[] {
 function getCards(
   nameOfEl: HTMLElement,
   n: number,
-  nameOfArray: object[]
+  nameOfArray: PaginatorData[]
 ): void {
   for (let obj of selectPosts(n, nameOfArray)) {
     nameOfEl.innerHTML += createItem(obj as any);
@@ -89,7 +89,7 @@ function resetStyles(): void {
 }
 
 // Paginator
-function paginator(wrapper: string, array: object[]): void {
+function paginator(wrapper: string, array: PaginatorData[]): void {
   const el = document.querySelector(wrapper) as HTMLElement;
   getCards(el, 1, array);
   switcher.addEventListener("click", (e: Event) => {
