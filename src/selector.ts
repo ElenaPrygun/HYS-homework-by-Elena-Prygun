@@ -1,6 +1,6 @@
 import { selectOptions } from "./models/Option.model";
 import { OnSelect } from "./models/OnSelect.model";
-import { InitSelect } from "./models/ISelect.model";
+import { InitSelect } from "./models/InitSelect.model";
 
 export class Select implements InitSelect {
   private el: HTMLElement | null;
