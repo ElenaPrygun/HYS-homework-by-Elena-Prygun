@@ -1,17 +1,18 @@
 import { IStorage } from "./models/Storage.model";
 import { SliderData } from "./models/SliderData.model";
+import { LocalStorage } from "./decorators/localSrorage.decorator";
 
 export class Storage implements IStorage<SliderData> {
-  constructor(public storageData: any[]) {
-    this.storageData = storageData;
+  @LocalStorage("DataFromStorage")
+  localData: Array<SliderData>;
+
+  constructor(){
     this.saveData();
   }
-  public saveData<T>(): void {
-    localStorage.setItem("dataForSlider", JSON.stringify(this.storageData));
-  }
-  public getSliderData<T>(): Array<T> {
-    return localStorage.getItem("dataForSlider")
-      ? JSON.parse(localStorage.getItem("dataForSlider"))
-      : [];
+
+  public saveData<T>(): void {}
+
+  public getSliderData<T>(): Array<SliderData> {
+    return this.localData;
   }
 }
