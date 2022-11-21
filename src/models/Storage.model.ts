@@ -1,5 +1,8 @@
 export interface IStorage<T> {
   localData: Array<T>;
-  saveData(): void;
+
+  saveData(value: Array<any>): void;
+
+
   getSliderData(): Array<T>;
 }
