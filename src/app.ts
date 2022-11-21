@@ -1,3 +1,5 @@
+import { ReadOnly } from "./decorators/readOnly.decorator";
+
 // Mobile menu
 import { mobileMenu } from "./mobile-menu";
 
@@ -10,7 +12,6 @@ import { checkForm } from "./form";
 
 // Which one do you prefer
 import { Slider } from "./slider";
-import { dataForSlider } from "./data";
 import { Storage } from "./storage";
 import { Select } from "./selector";
 
@@ -68,6 +69,7 @@ export class App extends InitApp {
     this.select = new Select("#select", this.onAlbumChange.bind(this));
   }
 
+  @ReadOnly(true)
   public async init(): Promise<void> {
     mobileMenu();
     paginator("#paginator", dataForLatestBlog);
