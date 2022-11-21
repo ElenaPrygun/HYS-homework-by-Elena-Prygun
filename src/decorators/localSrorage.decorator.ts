@@ -12,8 +12,6 @@ export function LocalStorage(value: string) {
         : [];
     };
 
-    setter();
-
     Object.defineProperty(target, propertyKey, {
       get: getter,
       set: setter,

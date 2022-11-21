@@ -6,6 +6,10 @@ export class Storage implements IStorage<SliderData> {
   @LocalStorage("DataFromStorage")
   localData: Array<SliderData>;
 
+  constructor(){
+    this.saveData();
+  }
+
   public saveData<T>(): void {}
 
   public getSliderData<T>(): Array<SliderData> {
