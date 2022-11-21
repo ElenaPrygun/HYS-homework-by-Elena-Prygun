@@ -4,8 +4,7 @@ export function ReadOnly(value: boolean) {
     propertyKey: string | symbol,
     descriptor: PropertyDescriptor
   ) {
-    descriptor.writable = !value;
-    descriptor.configurable = !value;
-    Object.freeze(target);
+    descriptor.writable = value;
+    descriptor.configurable = value;
   };
 }

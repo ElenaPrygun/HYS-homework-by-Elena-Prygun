@@ -69,7 +69,7 @@ export class App extends InitApp {
     this.select = new Select("#select", this.onAlbumChange.bind(this));
   }
 
-  @ReadOnly(true)
+  @ReadOnly(false)
   public async init(): Promise<void> {
     mobileMenu();
     paginator("#paginator", dataForLatestBlog);
